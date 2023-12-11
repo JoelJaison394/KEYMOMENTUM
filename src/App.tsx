@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Preloader from "./components/Preloader";
 import Navbar from "./components/Navbar";
+import ToggleOverlay from "./components/ToogleOverlay";
 
 const App: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -18,6 +19,7 @@ const App: React.FC = () => {
   return (
     <div className="app bg-[#0E0E0E]">{isLoading ? <Preloader /> : <>
     <Navbar/>
+    <ToggleOverlay/>
     </>}</div>
   );
 };

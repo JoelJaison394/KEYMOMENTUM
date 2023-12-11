@@ -4,6 +4,7 @@ import Logo from "../assets/complete-logo-white.png";
 import HOME from "../assets/Icons/HOME.svg";
 import LEADERBOARD from "../assets/Icons/LEADERBOARD.svg";
 import SETTINGS from "../assets/Icons/SETTINGS.svg";
+import { useSettings } from "../context/SettingsContext";
 
 const Navbar: React.FC = () => {
   const containerVariants = {
@@ -16,6 +17,7 @@ const Navbar: React.FC = () => {
     hover: { scale: 1.05 },
   };
 
+  const { toggleOverlay, isOverlayVisible } = useSettings();
   return (
     <motion.nav
       className="w-full flex justify-around items-center p-3"
@@ -66,14 +68,21 @@ const Navbar: React.FC = () => {
           <motion.div
             variants={itemVariants}
             whileHover="hover"
-            className="h-auto p-3 bg-[#282828] rounded-2xl mx-4 cursor-pointer hover:bg-[#484848]"
+            className={`h-auto p-3 rounded-2xl mx-4 cursor-pointer ${
+              isOverlayVisible ? ' border-blue-300' : ' border-transparent'
+            }`}
+            onClick={toggleOverlay}
+
           >
-            <img
+            <motion.img
               src={SETTINGS}
               alt="KeyMomentem homeIcon Icon"
               height={44}
               width={44}
               className="mx-2"
+              whileTap={{ scale: 0.95 }}
+              animate={{ rotate: isOverlayVisible ? 90 : 0 }}
+              transition={{ duration: .5 }}
             />
           </motion.div>
         </div>
