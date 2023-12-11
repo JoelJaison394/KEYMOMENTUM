@@ -5,7 +5,12 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        Jura: ['Jura', 'sans-serif'],
+        Kotta: ['Kotta One', 'sans-serif'],
+      },
+    },
   },
   plugins: [],
 }
