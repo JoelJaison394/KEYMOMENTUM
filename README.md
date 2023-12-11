@@ -1,30 +1,34 @@
-# React + TypeScript + Vite
+# <img src="https://res.cloudinary.com/dxraggwp4/image/upload/v1702274608/KEYMOMENTUM/KEYMOMENTUM-logo-sq_hdbypm.png" width="50" height="50"> KEYMOMENTUM 🚀
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![KEYMOMENTUM Logo](https://res.cloudinary.com/dxraggwp4/image/upload/v1702274295/KEYMOMENTUM/Github-KEYMOMENTUM-logo_sjn5yf.png)
 
-Currently, two official plugins are available:
+KEYMOMENTUM is an exciting typing speed checking project designed to elevate your typing skills while providing an engaging and challenging experience.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Key Features
 
-## Expanding the ESLint configuration
+- 🎯 **Speed Challenges:** Test your typing speed with exciting challenges tailored for all skill levels.
+- 🚥 **Multiple Difficulty Levels:** Choose from various difficulty levels to match your typing prowess.
+- 🌐 **Real-time Feedback:** Receive instant feedback on accuracy and words per minute (WPM).
+- 🏆 **Leaderboards:** Compete with friends or challenge yourself to reach the top of the global leaderboards.
+- 🎨 **Interactive Interface:** Immerse yourself in a visually appealing and user-friendly typing environment.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Preview
 
-- Configure the top-level `parserOptions` property like this:
+![TypoThrill Preview](link-to-your-sample-image.png)
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+## How to Use
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+1. 🚀 Clone the repository to your local machine.
+2. 🖥️ Open the project in your preferred code editor.
+3. 🌐 Launch the application and start typing to check your speed.
+
+## Contributing
+
+Contributions are welcome! If you have ideas for improvements, new features, or bug fixes, feel free to open an issue or submit a pull request.
+
+## License
+
+This project is licensed under the [GNU General Public License v3.0](LICENSE).
+
+**Explore TypoThrill and become a typing virtuoso today! 🚀**
+
