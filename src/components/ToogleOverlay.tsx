@@ -1,4 +1,4 @@
-import React from "react";
+
 import { motion, AnimatePresence } from "framer-motion";
 import { useSettings } from "../context/SettingsContext";
 import BACK from "../assets/Icons/BACK.svg";
