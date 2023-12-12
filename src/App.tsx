@@ -6,8 +6,6 @@ import TypingGame from "./components/TypeBox/TypeSpeedBox";
 import { useSettings } from "./context/SettingsContext";
 import { useStats } from "./context/StatsContext";
 import CustomStats from "./components/Stats";
-import { AiOutlineClose } from "react-icons/ai";
-import { motion } from "framer-motion";
 
 const MobileComponent: React.FC = () => {
   return (
