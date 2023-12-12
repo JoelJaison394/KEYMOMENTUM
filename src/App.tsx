@@ -6,6 +6,7 @@ import TypingGame from "./components/TypeBox/TypeSpeedBox";
 import { useSettings } from "./context/SettingsContext";
 import { useStats } from "./context/StatsContext";
 import CustomStats from "./components/Stats";
+import Footer from "./components/Footer";
 
 const MobileComponent: React.FC = () => {
   return (
@@ -66,6 +67,7 @@ const App: React.FC = () => {
           <Navbar />
           <ToggleOverlay />
           <TypingGame />
+          <Footer />   
           {isMobile && <MobileComponent />}
           {statsOverlay && (
             <CustomStats
