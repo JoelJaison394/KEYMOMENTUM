@@ -8,14 +8,13 @@ const useCapsLockStatus = () => {
       setCapsLockIsOn(e.getModifierState('CapsLock'));
     };
 
-    // Add event listener when the component mounts
     window.addEventListener('keydown', handleCapsLockChange);
 
-    // Remove event listener when the component unmounts
+   
     return () => {
       window.removeEventListener('keydown', handleCapsLockChange);
     };
-  }, []); // Empty dependency array ensures the effect runs only once on mount
+  }, []); 
 
   return capsLockIsOn;
 };

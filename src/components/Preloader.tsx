@@ -1,4 +1,3 @@
-// src/components/Preloader.tsx
 
 import React from "react";
 import { Variants, motion } from "framer-motion";

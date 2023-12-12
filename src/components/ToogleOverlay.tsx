@@ -1,7 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useSettings } from "../context/SettingsContext";
 import BACK from "../assets/Icons/BACK.svg";
-import { useEffect } from "react";
 
 const ToggleOverlay = () => {
   const { isOverlayVisible, toggleOverlay, setDifficulty, difficulty , setTimeRange , timeRange } =
@@ -13,10 +12,6 @@ const ToggleOverlay = () => {
   const handleTimeSliderChange = (value: number) => {
     setTimeRange(value);
   };
-
-  useEffect(() => {
-    // You can add additional initialization logic here
-  }, []);
 
   return (
     <AnimatePresence>

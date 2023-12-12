@@ -3,7 +3,6 @@ import React, { createContext, useContext, useState, ReactNode, useEffect, Dispa
 interface Settings {
   theme: string;
   fontSize: string;
-  // Add more settings as needed
 }
 
 interface SettingsContextProps {
@@ -124,7 +123,7 @@ export const SettingsProvider: React.FC<SettingsProviderProps> = ({ children }) 
     setTimeRemaining,
     timeRemaining,
     resetGame,
-    userInputArray, // Include userInputArray in the context value
+    userInputArray, 
    setUserInputArray
   };
 

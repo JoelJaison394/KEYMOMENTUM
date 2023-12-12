@@ -13,7 +13,6 @@ const MobileComponent: React.FC = () => {
     <div className="fixed w-full inset-0 flex items-center justify-center bg-opacity-50 bg-blur backdrop-filter backdrop-blur-md">
       <div className="bg-white w-4/6 p-8 rounded-lg space-y-4">
         <h3>Please use a desktop</h3>
-        {/* Add your mobile-specific content or message here */}
       </div>
     </div>
   );

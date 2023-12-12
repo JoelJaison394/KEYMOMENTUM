@@ -45,7 +45,7 @@ const TypingGame: React.FC<TypingGameProps> = () => {
       return baseCount + multiplier * 10;
     };
 
-    const baseCount = 100; // Adjust as needed
+    const baseCount = 100; 
     let wordCount;
 
     if (difficulty === 0) {
@@ -103,9 +103,7 @@ const TypingGame: React.FC<TypingGameProps> = () => {
         const input = e.target.value;
         setUserInput(input);
 
-        // Check if it's the first character
         if (!userInputArray.length) {
-          // Call your function here
           initializeGame();
         }
 
