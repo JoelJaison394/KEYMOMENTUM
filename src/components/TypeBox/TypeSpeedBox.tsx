@@ -19,23 +19,20 @@ const TypingGame: React.FC<TypingGameProps> = () => {
   const {
     difficulty,
     timeRange,
-    setDifficulty,
-    setTimeRange,
     timeRemaining,
     isGameRunning,
     setStartTime,
     startTime,
     endTime,
     setEndTime,
-    setTimeRemaining,
     setIsGameRunning,
-  } = useSettings();
+    resetGame,
+    userInputArray,
+    setUserInputArray
+} = useSettings();
   const { updateAccuracy, updateWPM, updateCorrectCharsTyped } = useStats();
-
-  const [sentence, setSentence] = useState<string>("");
   const [userInput, setUserInput] = useState<string>("");
-
-  const [userInputArray, setUserInputArray] = useState<string[]>([]);
+  const [sentence, setSentence] = useState<string>("");
   const capsLockIsOn = useCapsLockStatus();
   const sentenceContainerRef = useRef<HTMLDivElement>(null);
   const [unmatchedcharNum, setUnmatchedcharNum] = useState<number>(0);
@@ -68,25 +65,25 @@ const TypingGame: React.FC<TypingGameProps> = () => {
     );
   }, [difficulty, timeRange]);
 
+
+  useEffect(() => {
+
+    if(userInputArray.length === 0){
+        setUserInput("");
+    }
+  }, [userInputArray]);
+
   const handleReset = () => {
+    setSentence(
+        wordsGenerator(100, difficulty, "ENGLISH_MODE")
+          .map((word) => (typeof word.val === "string" ? word.val : word.val.val))
+          .join(" ")
+      );
+      
     resetGame(0);
   };
 
-  const resetGame = (lvl: number) => {
-    setDifficulty(lvl);
-    setSentence(
-      wordsGenerator(100, difficulty, "ENGLISH_MODE")
-        .map((word) => (typeof word.val === "string" ? word.val : word.val.val))
-        .join(" ")
-    );
-    setUserInput("");
-    setIsGameRunning(false);
-    setTimeRange(30);
-    setStartTime(null);
-    setEndTime(null);
-    setTimeRemaining(-1);
-    setUserInputArray([]);
-  };
+
 
   const charactersMatch = (char1: string, char2: string) => {
     const lowerChar1 = char1.toLowerCase();
@@ -179,15 +176,6 @@ const TypingGame: React.FC<TypingGameProps> = () => {
     );
   }, [sentence, userInputArray]);
 
-  //   useEffect(() => {
-  //     const intervalId = setInterval(() => {
-  //       // Toggle between visible and hidden
-  //       setOverlayVisible((prev) => !prev);
-  //     }, 500);
-
-  //     return () => clearInterval(intervalId);
-  //   }, []);
-
   return (
     <div className="h-70vh my-4 flex flex-col items-center justify-center bg-black text-white">
         <div className="h-8 m-5">
@@ -216,7 +204,7 @@ const TypingGame: React.FC<TypingGameProps> = () => {
         <p className="text-2xl  w-10/12">{renderSentence}</p>
       </div>
       <input
-        className="bg-gray-800 text-4xl text-white p-2 rounded w-1/2 h-20"
+        className="bg-gray-800 text-4xl text-white p-2 rounded w-1/2 h-20 mt-8 "
         type="text"
         value={userInput}
         onChange={handleInputChange}
@@ -224,7 +212,7 @@ const TypingGame: React.FC<TypingGameProps> = () => {
       />
       <div className="mt-10">
         <button
-          className="h-auto p-3 bg-[#282828] rounded-2xl mx-4 flex justify-center items-center cursor-pointer hover:bg-[#484848]"
+          className="h-auto p-3 bg-[#282828] rounded-2xl mx-4 flex justify-center items-center cursor-pointer hover:bg-[#484848] mb-5"
           onClick={handleReset}
         >
           <motion.div
@@ -239,20 +227,6 @@ const TypingGame: React.FC<TypingGameProps> = () => {
           </motion.div>
         </button>
       </div>
-      {/* {timeRemaining == 0 && (
-          <CustomStats
-            status={isGameRunning ? "running" : "finished"}
-            wpm={wpm}
-            countDown={timeRange}
-            statsCharCount={{
-              correct: 0,
-              incorrect: 0,
-              missing: 0,
-              accuracy: accuracy,
-            }}
-            rawKeyStrokes={0}
-          />
-        )} */}
     </div>
   );
 };

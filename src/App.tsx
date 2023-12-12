@@ -3,11 +3,29 @@ import Preloader from "./components/Preloader";
 import Navbar from "./components/Navbar";
 import ToggleOverlay from "./components/ToogleOverlay";
 import TypingGame from "./components/TypeBox/TypeSpeedBox";
+import { useSettings } from "./context/SettingsContext";
+import { useStats } from "./context/StatsContext";
+import CustomStats from "./components/Stats";
+import { AiOutlineClose } from "react-icons/ai";
+import { motion } from "framer-motion";
 
+const MobileComponent: React.FC = () => {
+  return (
+    <div className="fixed w-full inset-0 flex items-center justify-center bg-opacity-50 bg-blur backdrop-filter backdrop-blur-md">
+      <div className="bg-white w-4/6 p-8 rounded-lg space-y-4">
+        <h3>Please use a desktop</h3>
+        {/* Add your mobile-specific content or message here */}
+      </div>
+    </div>
+  );
+};
 
 const App: React.FC = () => {
+  const { timeRemaining } = useSettings();
+  const { wpm, accuracy, correctCharsTyped } = useStats();
   const [isLoading, setIsLoading] = useState(true);
-
+  const [statsOverlay, setStatsOverlay] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 1000);
 
   useEffect(() => {
     const loadData = async () => {
@@ -19,14 +37,53 @@ const App: React.FC = () => {
     loadData();
   }, []);
 
-  return (
-    <div className="app bg-[#0E0E0E]">{isLoading ? <Preloader /> : <>
-    <Navbar/>
-    <ToggleOverlay/>
-    {
-      <TypingGame/>
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 1000);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (timeRemaining === 0) {
+      setStatsOverlay(true);
+    } else if (timeRemaining === -1) {
+      setStatsOverlay(false);
     }
-    </>}</div>
+  }, [timeRemaining]);
+
+  return (
+    <div className="app bg-[#0E0E0E]">
+      {isLoading ? (
+        <Preloader />
+      ) : (
+        <>
+          <Navbar />
+          <ToggleOverlay />
+          <TypingGame />
+          {isMobile && <MobileComponent />}
+          {statsOverlay && (
+            <CustomStats
+              status="finished"
+              wpm={wpm}
+              countDown={timeRemaining ?? 0}
+              statsCharCount={{
+                correct: correctCharsTyped,
+                incorrect: 0,
+                missing: 0,
+                accuracy: accuracy,
+              }}
+              rawKeyStrokes={0}
+            />
+          )}
+        </>
+      )}
+    </div>
   );
 };
 

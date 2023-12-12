@@ -23,6 +23,9 @@ interface SettingsContextProps {
   startTime: number | null;
   setTimeRemaining: Dispatch<SetStateAction<number | null>>;
   timeRemaining: number | null;
+  resetGame: (lvl: number) => void;
+  userInputArray: string[];
+  setUserInputArray: Dispatch<SetStateAction<string[]>>;
 }
 
 const SettingsContext = createContext<SettingsContextProps | undefined>(undefined);
@@ -51,6 +54,9 @@ export const SettingsProvider: React.FC<SettingsProviderProps> = ({ children }) 
   const [startTime, setStartTime] = useState<number | null>(null);
   const [endTime, setEndTime] = useState<number | null>(null);
   const [timeRemaining, setTimeRemaining] = useState<number | null>(-1);
+  const [userInputArray, setUserInputArray] = useState<string[]>([]);
+  
+  
 
   const setDifficultyValue = (value: number) => {
     const clampedValue = Math.max(0, Math.min(3, value));
@@ -90,6 +96,16 @@ export const SettingsProvider: React.FC<SettingsProviderProps> = ({ children }) 
     return () => clearInterval(timer);
   }, [isGameRunning, startTime, endTime]);
 
+  const resetGame = (lvl: number) => {
+    setDifficulty(lvl);
+    setIsGameRunning(false);
+    setTimeRange(30);
+    setStartTime(null);
+    setEndTime(null);
+    setTimeRemaining(-1);
+    setUserInputArray([]);
+  };
+
   const contextValue: SettingsContextProps = {
     settings,
     updateSetting,
@@ -107,6 +123,9 @@ export const SettingsProvider: React.FC<SettingsProviderProps> = ({ children }) 
     setEndTime,
     setTimeRemaining,
     timeRemaining,
+    resetGame,
+    userInputArray, // Include userInputArray in the context value
+   setUserInputArray
   };
 
   return <SettingsContext.Provider value={contextValue}>{children}</SettingsContext.Provider>;
