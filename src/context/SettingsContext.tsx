@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useState, ReactNode, useEffect, Dispatch, SetStateAction } from 'react';
 
 interface Settings {
   theme: string;
@@ -11,6 +11,18 @@ interface SettingsContextProps {
   updateSetting: (key: string, value: string) => void;
   isOverlayVisible: boolean;
   toggleOverlay: () => void;
+  difficulty: number;
+  timeRange: number;
+  setDifficulty: (value: number) => void;
+  setTimeRange: (seconds: number) => void;
+  isGameRunning: boolean;
+  setIsGameRunning: Dispatch<SetStateAction<boolean>>;
+  setStartTime: Dispatch<SetStateAction<number | null>>;
+  setEndTime: Dispatch<SetStateAction<number | null>>;
+  endTime: number | null;
+  startTime: number | null;
+  setTimeRemaining: Dispatch<SetStateAction<number | null>>;
+  timeRemaining: number | null;
 }
 
 const SettingsContext = createContext<SettingsContextProps | undefined>(undefined);
@@ -33,6 +45,17 @@ export const SettingsProvider: React.FC<SettingsProviderProps> = ({ children }) 
     fontSize: 'medium',
     // Add more settings as needed
   });
+  const [difficulty, setDifficulty] = useState<number>(0);
+  const [timeRange, setTimeRange] = useState<number>(30);
+  const [isGameRunning, setIsGameRunning] = useState<boolean>(false);
+  const [startTime, setStartTime] = useState<number | null>(null);
+  const [endTime, setEndTime] = useState<number | null>(null);
+  const [timeRemaining, setTimeRemaining] = useState<number | null>(-1);
+
+  const setDifficultyValue = (value: number) => {
+    const clampedValue = Math.max(0, Math.min(3, value));
+    setDifficulty(clampedValue);
+  };
 
   const [isOverlayVisible, setIsOverlayVisible] = useState(false);
 
@@ -48,16 +71,43 @@ export const SettingsProvider: React.FC<SettingsProviderProps> = ({ children }) 
     console.log('toggleOverlay', isOverlayVisible);
   };
 
+  useEffect(() => {
+    let timer: NodeJS.Timeout;
+
+    if (isGameRunning && startTime !== null && endTime !== null) {
+      timer = setInterval(() => {
+        const currentTimeInSeconds = Math.floor(Date.now() / 1000);
+        const remainingTimeInSeconds = endTime - currentTimeInSeconds;
+        setTimeRemaining(remainingTimeInSeconds >= 0 ? remainingTimeInSeconds : 0);
+        if (remainingTimeInSeconds <= 0) {
+          setIsGameRunning(false);
+          clearInterval(timer);
+        }
+      }, 1000);
+      setTimeRemaining(-1);
+    }
+
+    return () => clearInterval(timer);
+  }, [isGameRunning, startTime, endTime]);
+
   const contextValue: SettingsContextProps = {
     settings,
     updateSetting,
     isOverlayVisible,
     toggleOverlay,
+    difficulty,
+    timeRange,
+    setDifficulty: setDifficultyValue,
+    setTimeRange,
+    isGameRunning,
+    setIsGameRunning,
+    setStartTime,
+    startTime,
+    endTime,
+    setEndTime,
+    setTimeRemaining,
+    timeRemaining,
   };
 
-  return (
-    <SettingsContext.Provider value={contextValue}>
-      {children}
-    </SettingsContext.Provider>
-  );
+  return <SettingsContext.Provider value={contextValue}>{children}</SettingsContext.Provider>;
 };
