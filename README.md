@@ -21,5 +21,5 @@ Contributions are welcome! If you have ideas for improvements, new features, or 
 
 This project is licensed under the [GNU General Public License v3.0](LICENSE).
 
-**Explore TypoThrill and become a typing virtuoso today! 🚀**
+**Explore KEYMOMENTUM and become a typing virtuoso today! 🚀**
 
