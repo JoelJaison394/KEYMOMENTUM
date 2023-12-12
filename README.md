@@ -12,15 +12,6 @@ KEYMOMENTUM is an exciting typing speed checking project designed to elevate you
 - 🏆 **Leaderboards:** Compete with friends or challenge yourself to reach the top of the global leaderboards.
 - 🎨 **Interactive Interface:** Immerse yourself in a visually appealing and user-friendly typing environment.
 
-## Preview
-
-![TypoThrill Preview](link-to-your-sample-image.png)
-
-## How to Use
-
-1. 🚀 Clone the repository to your local machine.
-2. 🖥️ Open the project in your preferred code editor.
-3. 🌐 Launch the application and start typing to check your speed.
 
 ## Contributing
 
