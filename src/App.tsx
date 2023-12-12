@@ -55,8 +55,10 @@ const App: React.FC = () => {
     }
   }, [timeRemaining]);
 
+  const hiddenClass = isMobile ? "hidden" : "";
+
   return (
-    <div className="app bg-[#0E0E0E]">
+    <div className={`app bg-[#0E0E0E] ${hiddenClass}`}>
       {isLoading ? (
         <Preloader />
       ) : (
