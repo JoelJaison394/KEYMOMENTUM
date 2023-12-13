@@ -19,7 +19,7 @@ const MobileComponent: React.FC = () => {
 };
 
 const App: React.FC = () => {
-  const { timeRemaining , userInputArray } = useSettings();
+  const { timeRemaining } = useSettings();
   const { wpm, accuracy, correctCharsTyped } = useStats();
   const [isLoading, setIsLoading] = useState(true);
   const [statsOverlay, setStatsOverlay] = useState(false);
