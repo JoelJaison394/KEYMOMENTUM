@@ -23,9 +23,7 @@ interface CustomStatsProps {
 const CustomStats: React.FC<CustomStatsProps> = ({
   status,
   wpm,
-  countDown,
   statsCharCount,
-  rawKeyStrokes,
 }) => {
   const { resetGame  } = useSettings();
   const onclose = () => {
