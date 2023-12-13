@@ -17,7 +17,6 @@ interface CustomStatsProps {
     missing: number;
     accuracy: number;
   };
-  rawKeyStrokes: number;
 }
 
 const CustomStats: React.FC<CustomStatsProps> = ({
