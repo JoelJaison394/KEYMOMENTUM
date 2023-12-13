@@ -9,7 +9,6 @@ KEYMOMENTUM is an exciting typing speed checking project designed to elevate you
 - 🎯 **Speed Challenges:** Test your typing speed with exciting challenges tailored for all skill levels.
 - 🚥 **Multiple Difficulty Levels:** Choose from various difficulty levels to match your typing prowess.
 - 🌐 **Real-time Feedback:** Receive instant feedback on accuracy and words per minute (WPM).
-- 🏆 **Leaderboards:** Compete with friends or challenge yourself to reach the top of the global leaderboards.
 - 🎨 **Interactive Interface:** Immerse yourself in a visually appealing and user-friendly typing environment.
 
 
