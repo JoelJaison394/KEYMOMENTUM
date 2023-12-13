@@ -19,7 +19,7 @@ const MobileComponent: React.FC = () => {
 };
 
 const App: React.FC = () => {
-  const { timeRemaining } = useSettings();
+  const { timeRemaining , userInputArray } = useSettings();
   const { wpm, accuracy, correctCharsTyped } = useStats();
   const [isLoading, setIsLoading] = useState(true);
   const [statsOverlay, setStatsOverlay] = useState(false);
@@ -79,7 +79,7 @@ const App: React.FC = () => {
                 missing: 0,
                 accuracy: accuracy,
               }}
-              rawKeyStrokes={0}
+              // rawKeyStrokes={userInputArray.length}
             />
           )}
         </>

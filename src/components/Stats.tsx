@@ -39,22 +39,22 @@ const CustomStats: React.FC<CustomStatsProps> = ({
             <AiOutlineClose size={24} />
           </button>
         </div>
-        <h3>Your Performance</h3>
+        <h3 className="mb-10 text-4xl underline-offset-2">Your Performance</h3>
         <div className="flex">
-          <div className="w-96">
+          <div className="w-96 text-4xl flex justify-center items-center">
             {wpm < 8 ? (
-              <img src={MEDAL5} alt="" />
+              <img src={MEDAL5} alt="" height={250} width={150} />
             ) : wpm < 15 ? (
-              <img src={MEDAL4} alt="" />
+              <img src={MEDAL4} alt="" height={250} width={150} />
             ) : wpm < 20 ? (
-              <img src={MEDAL3} alt="" />
+              <img src={MEDAL3} alt="" height={250} width={150} />
             ) : wpm < 30 ? (
-              <img src={MEDAL2} alt="" />
+              <img src={MEDAL2} alt="" height={250} width={150} />
             ) : (
-              <img src={MEDAL1} alt="" />
+              <img src={MEDAL1} alt="" height={250} width={150} />
             )}
           </div>
-          <div className="">
+          <div className="w-3/4 flex-col justify-center items-center">
             <div>
               <h4>WPM: {Math.round(wpm)}</h4>
             </div>
@@ -81,13 +81,13 @@ const CustomStats: React.FC<CustomStatsProps> = ({
                 </h4>
               </div>
             )}
-            {status === "finished" && (
+            {/* {status === "finished" && (
               <div>
                 <h4>
                   Raw KPM: {Math.round((rawKeyStrokes / countDown) * 60.0)}
                 </h4>
               </div>
-            )}
+            )} */}
           </div>
         </div>
       </div>
