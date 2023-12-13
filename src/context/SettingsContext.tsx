@@ -73,7 +73,6 @@ export const SettingsProvider: React.FC<SettingsProviderProps> = ({ children }) 
 
   const toggleOverlay = () => {
     setIsOverlayVisible((prev) => !prev);
-    console.log('toggleOverlay', isOverlayVisible);
   };
 
   useEffect(() => {

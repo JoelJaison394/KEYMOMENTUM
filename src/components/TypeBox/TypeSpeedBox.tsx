@@ -36,9 +36,6 @@ const TypingGame: React.FC<TypingGameProps> = () => {
   const capsLockIsOn = useCapsLockStatus();
   const sentenceContainerRef = useRef<HTMLDivElement>(null);
   const [unmatchedcharNum, setUnmatchedcharNum] = useState<number>(0);
-  useEffect(() => {
-    console.log("Updated sentence:", sentence);
-  }, [sentence]);
 
   useEffect(() => {
     const calculateWordCount = (baseCount: number, multiplier: number) => {
@@ -143,17 +140,14 @@ const TypingGame: React.FC<TypingGameProps> = () => {
       if (startTime === null) {
         setStartTime(Math.floor(Date.now() / 1000));
       }
-      console.log(startTime);
       if (endTime === null) {
         setEndTime(Math.floor(Date.now() / 1000) + timeRange);
       }
     }
-    console.log("start time", startTime, "end time", endTime);
   };
 
   const renderSentence = useMemo(() => {
     const sentenceString = sentence;
-    console.log("sentenceString - : ", sentenceString);
     const userInputString = userInputArray.join("");
 
     return (
